@@ -11,4 +11,9 @@
     <scope>test</scope>
 </dependency>  
   </dependencies>
+  <properties>
+  <sonar.projectKey>MohamedHalith001_Leave_Management_System_Maven</sonar.projectKey>
+  <sonar.organization>mohamedhalith001</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+</properties>
 </project>
