@@ -11,4 +11,23 @@
     <scope>test</scope>
 </dependency>  
   </dependencies>
+  <properties>
+  <sonar.projectKey>MohamedHalith001_Leave_Management_System_Maven</sonar.projectKey>
+  <sonar.organization>mohamedhalith001</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  <maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+</properties>
+  
+  <build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					 <version>3.8.0.2131</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
