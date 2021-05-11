@@ -1,4 +1,4 @@
-package com.lms.chainsys.TestGetterSetter;
+package com.lms.chainsys.testgettersetter;
 
 import static org.junit.Assert.*;
 
@@ -9,16 +9,16 @@ import org.junit.Test;
 
 import com.lms.chainsys.model.LeaveRequest;
 
-public class TestGetSetFromDate {
+public class TestGetSetToDate {
 	LeaveRequest leaveRequest = new LeaveRequest();
 	@Test
 	public void testwithValidDate() {
 		String date = "2021-06-02";
 		LocalDate testDate = LocalDate.parse(date);
 //		LocalDate reviewDate = LocalDate.parse("2021-05-11");
-		leaveRequest.setFromDate(testDate);
-		assertEquals(testDate,leaveRequest.getFromDate());
-//		assertEquals(reviewDate,leaveRequest.getFromDate());
+		leaveRequest.setToDate(testDate);
+		assertEquals(testDate,leaveRequest.getToDate());
+//		assertEquals(reviewDate,leaveRequest.getToDate());
 	}
 	@Test (expected = DateTimeException.class)
 	public void testwithPastDate() {

@@ -1,20 +1,19 @@
-package com.lms.chainsys.managertest;
+package com.lms.chainsys.manager;
 
 import static org.junit.Assert.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 
-import org.junit.FixMethodOrder;
 import org.junit.Test;
 
-import com.lms.chainsys.manager.LeaveRequestManager;
 import com.lms.chainsys.model.LeaveRequest;
+import com.lms.chainsys.service.LeaveRequestManager;
 
 public class TestLeaveRequestManager {
 	@Test
 	public void testGetRequest() {
-		ArrayList<LeaveRequest> requestList = LeaveRequestManager.getRequestList();
+		List<LeaveRequest> requestList = LeaveRequestManager.getRequestList();
 		assertEquals(2,requestList.size());
 	}
 	@Test
@@ -22,47 +21,51 @@ public class TestLeaveRequestManager {
 		LeaveRequest leaveRequest = new LeaveRequest();
 		leaveRequest.setName("Mohamed");
 		leaveRequest.setId(2627);
-		LocalDate fromDate = LocalDate.parse("2021-05-11");
-		LocalDate toDate = LocalDate.parse("2021-05-12");
+		LocalDate fromDate = LocalDate.parse("2022-05-11");
+		LocalDate toDate = LocalDate.parse("2022-05-12");
 		leaveRequest.setFromDate(fromDate);
 		leaveRequest.setToDate(toDate);
 		leaveRequest.setReason("Sick Leave");
 		LeaveRequestManager.addRequest(leaveRequest);
+		
 		LeaveRequest leaveRequest1 = new LeaveRequest();
 		leaveRequest1.setName("Mohamed");
 		leaveRequest1.setId(2627);
-		fromDate = LocalDate.parse("2021-05-11");
-		toDate = LocalDate.parse("2021-05-12");
+		fromDate = LocalDate.parse("2022-05-11");
+		toDate = LocalDate.parse("2022-05-12");
 		leaveRequest1.setFromDate(fromDate);
 		leaveRequest1.setToDate(toDate);
 		leaveRequest1.setReason("Sick Leave");
 		LeaveRequestManager.addRequest(leaveRequest1);
 		LeaveRequest leaveRequest2 = new LeaveRequest();
+		
+		
 		leaveRequest2.setName("Mohamed");
 		leaveRequest2.setId(2627);
-		fromDate = LocalDate.parse("2021-05-11");
-		toDate = LocalDate.parse("2021-05-12");
+		fromDate = LocalDate.parse("2022-05-11");
+		toDate = LocalDate.parse("2022-05-22");
 		leaveRequest2.setFromDate(fromDate);
 		leaveRequest2.setToDate(toDate);
-		leaveRequest2.setReason("Sick Leave");
+		leaveRequest2.setReason("Going away");
 		LeaveRequestManager.addRequest(leaveRequest2);
-		ArrayList<LeaveRequest> requestList = LeaveRequestManager.getRequestList();
-		assertEquals("Mohamed",requestList.get(0).getName());
-		assertEquals(2627,requestList.get(0).getId());
-		assertEquals(LocalDate.parse("2021-05-11"),requestList.get(0).getFromDate());
-		assertEquals(LocalDate.parse("2021-05-12"),requestList.get(0).getToDate());
-		assertEquals("Sick Leave",requestList.get(0).getReason());
+		
+		LeaveRequest getRequest = LeaveRequestManager.getLeaveRequest(1);
+		assertEquals("Mohamed",getRequest.getName());
+		assertEquals(2627,getRequest.getId());
+		assertEquals(LocalDate.parse("2022-05-11"),getRequest.getFromDate());
+		assertEquals(LocalDate.parse("2022-05-12"),getRequest.getToDate());
+		assertEquals("Sick Leave",getRequest.getReason());
 	}
 	@Test 
 	public void testCancelRequestWithValidIndex() {
 		LeaveRequestManager.cancelRequests(2);
 	}
 	
-	@Test (expected = IndexOutOfBoundsException.class)
+	@Test (expected = ArrayIndexOutOfBoundsException.class)
 	public void testCancelRequestWithNegativeIndex() {
 		LeaveRequestManager.cancelRequests(-1);
 	}
-	@Test (expected = IndexOutOfBoundsException.class)
+	@Test (expected = ArrayIndexOutOfBoundsException.class)
 	public void testCancelRequestWithOutOfBoundIndex() {
 		LeaveRequestManager.cancelRequests(4);
 	}
@@ -80,7 +83,7 @@ public class TestLeaveRequestManager {
 	}
 	@Test
 	public void testRejectRequestWithValidId() {
-		LeaveRequestManager.rejectRequest(3);
+		LeaveRequestManager.rejectRequest(2);
 	}
 	@Test (expected = ArrayIndexOutOfBoundsException.class)
 	public void testRejectRequestWithInvalidId() {

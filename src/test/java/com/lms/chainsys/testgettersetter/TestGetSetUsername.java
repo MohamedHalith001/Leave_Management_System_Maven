@@ -1,13 +1,14 @@
-package com.lms.chainsys.TestGetterSetter;
+package com.lms.chainsys.testgettersetter;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.lms.chainsys.model.User;
+import com.lms.chainsys.model.Employee;
+
 
 public class TestGetSetUsername {
-	User user = new User();
+	Employee user = new Employee();
 	@Test
 	public void testWithValidUsername() {
 		String username = "hradmin";

@@ -3,6 +3,8 @@ package com.lms.chainsys.model;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 
+import com.lms.chainsys.validator.DateValidator;
+
 public class LeaveRequest {
 	LocalDate today = LocalDate.now();
 	private int leaveId =0;
@@ -16,7 +18,7 @@ public class LeaveRequest {
 		return name;
 	}
 	public void setName(String name) {
-		if(name.isEmpty() || name.equalsIgnoreCase(" ")) {
+		if(name==null || name.trim().isEmpty()) {
 			throw new IllegalArgumentException("Name cannot be empty");
 		}
 		this.name = name;
@@ -34,7 +36,7 @@ public class LeaveRequest {
 		return fromDate;
 	}
 	public void setFromDate(LocalDate fromDate) {
-		if(fromDate.isBefore(today)) {
+		if(DateValidator.isInvalidDate(fromDate)) {
 			throw new DateTimeException("Date cannot be past date");
 		}
 		this.fromDate = fromDate;
@@ -43,7 +45,7 @@ public class LeaveRequest {
 		return toDate;
 	}
 	public void setToDate(LocalDate toDate) {
-		if(toDate.isBefore(today)) {
+		if(DateValidator.isInvalidDate(toDate)) {
 			throw new DateTimeException("Date cannot be past date");
 		}
 		this.toDate = toDate;
@@ -52,7 +54,7 @@ public class LeaveRequest {
 		return reason;
 	}
 	public void setReason(String reason) {
-		if(reason.isEmpty() || reason.equalsIgnoreCase(" ")) {
+		if(reason==null || reason.trim().isEmpty()) {
 			throw new IllegalArgumentException("Reason cannot be empty");
 		}
 		this.reason = reason;
@@ -70,7 +72,7 @@ public class LeaveRequest {
 		return status;
 	}
 	public void setStatus(String status) {
-		if(status.isEmpty() || status.equalsIgnoreCase(" ")) {
+		if(status==null || status.trim().isEmpty()) {
 			throw new IllegalArgumentException("Status cannot be empty");
 		}
 		this.status = status;

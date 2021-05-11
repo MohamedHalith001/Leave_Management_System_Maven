@@ -1,14 +1,15 @@
-package com.lms.chainsys.managertest;
+package com.lms.chainsys.validator;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.lms.chainsys.manager.LoginValidator;
-import com.lms.chainsys.model.User;
+import com.lms.chainsys.validator.*;
+import com.lms.chainsys.model.Employee;
+
 
 public class TestLoginValidator {
-	User admin = new User();
+	Employee admin = new Employee();
 	@Test
 	public void testAdminCheckWithValidDetails() {
 		admin.setUsername("hradmin");
@@ -33,8 +34,16 @@ public class TestLoginValidator {
 	}
 	
 	@Test
-	public void testEmployeeCheckWithValidDetails() {
+	public void testEmployeeCheckWithValidDetailswithEmployee1() {
 		admin.setUsername("moha2627");
+		admin.setPassword("pass1234");
+		boolean result= LoginValidator.employeeCheck(admin);
+		assertEquals(true,result);
+	}
+	
+	@Test
+	public void testEmployeeCheckWithValidDetailsWithEmploee2() {
+		admin.setUsername("hali2628");
 		admin.setPassword("pass1234");
 		boolean result= LoginValidator.employeeCheck(admin);
 		assertEquals(true,result);

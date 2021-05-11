@@ -1,4 +1,4 @@
-package com.lms.chainsys.TestGetterSetter;
+package com.lms.chainsys.testgettersetter;
 
 import static org.junit.Assert.*;
 
