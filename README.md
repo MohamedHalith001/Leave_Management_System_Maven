@@ -1,6 +1,14 @@
 # Leave_Management_System_Maven
 
-### Feature 1: Apply Request
+### Feature 1: Login
+
+* Checks the user credentials and verifies whether it is admin or an employee.
+
+**Testing Status: Completed**
+
+*Passed ALl Test Cases*
+
+### Feature 2: Apply Request
  
  * Used to apply for leave by the employee
 
@@ -8,7 +16,7 @@
 
  *Passed All Test Cases*
 
-### Feature 2: Cancel Request
+### Feature 3: Cancel Request
 
 * Used to cancel the applied leave request of the employee
 
@@ -16,7 +24,7 @@
 
 *Passed All Test Cases*
 
-### Feature 3 : View Request Status
+### Feature 4 : View Request Status
 
 * Used to view the current status of the applied request
 
@@ -24,7 +32,7 @@
 
 *Passed All Test Cases*
 
-### Feature 4: Approve Request
+### Feature 5: Approve Request
 
 * Provides access to the admin to approve the leave Request of employee
 
@@ -32,7 +40,7 @@
 
 *Passed All Test Cases*
 
-### Feature 4: Reject Request
+### Feature 6: Reject Request
 
 * Provides access to the admin to reject the leave Request of employee
 
